@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Api\V1\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\Auth\SendCodeRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 
 class SendCodeController extends Controller
 {
-    public function __invoke(SendCodeRequest $request)
+    public function __invoke(SendCodeRequest $request): JsonResponse
     {
         $user = User::firstOrCreate([
             'phone' => $request->phone
