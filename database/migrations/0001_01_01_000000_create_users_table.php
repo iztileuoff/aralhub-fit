@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('phone')->unique();
+            $table->foreignId('target_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
 
