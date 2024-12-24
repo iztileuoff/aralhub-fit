@@ -15,6 +15,8 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'phone' => $this->phone,
+            'target_id' => $this->target_id,
+            'target' => new TargetResource($this->whenLoaded('target')),
         ];
     }
 }

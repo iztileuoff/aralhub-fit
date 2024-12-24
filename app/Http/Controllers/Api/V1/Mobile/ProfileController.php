@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     public function show(Request $request): UserResource
     {
-        return new UserResource($request->user());
+        return new UserResource(auth()->user()->load('target'));
     }
 
     public function update(UpdateProfileRequest $request): UserResource
