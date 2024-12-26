@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Mobile\PackController;
 use App\Http\Controllers\Api\V1\Mobile\ProfileController;
 use App\Http\Controllers\Api\V1\Mobile\TargetController;
 
@@ -8,6 +9,7 @@ Route::group([
     'as'         => 'mobile.',
     'middleware' => 'auth:sanctum',
 ], function () {
-    Route::apiResource('targets', TargetController::class)->only('index');
     Route::apiSingleton('profile', ProfileController::class);
+    Route::apiResource('targets', TargetController::class)->only('index');
+    Route::apiResource('packs', PackController::class)->only('index');
 });
