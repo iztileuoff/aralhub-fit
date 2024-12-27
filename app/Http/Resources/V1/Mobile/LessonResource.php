@@ -18,6 +18,7 @@ class LessonResource extends JsonResource
             'module_id' => $this->module_id,
             'youtube_url' => $this->youtube_url,
             'is_free' => $this->is_free,
+            'checklists' => $this->checklists,
         ];
     }
 }
