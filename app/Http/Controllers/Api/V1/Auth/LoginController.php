@@ -24,7 +24,7 @@ class LoginController extends Controller
 
         Cache::forget($request->phone);
         $user = User::where('phone', $request->phone)->first();
-        $user->tokens()->delete();
+//        $user->tokens()->delete();
 
         $device = substr($request->userAgent() ?? '', 0, 255);
         $accessToken = $user->createToken($device)->plainTextToken;
