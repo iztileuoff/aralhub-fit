@@ -15,7 +15,7 @@ class IndexFreeLessonController extends Controller
     {
         $lessons = Lesson::where('is_free', true)
             ->inRandomOrder()
-            ->cursorPaginate($request->input('per_page', 10));
+            ->cursorPaginate();
 
         return new LessonCollection($lessons);
     }
