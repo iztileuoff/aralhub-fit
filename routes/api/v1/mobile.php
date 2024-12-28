@@ -17,7 +17,7 @@ Route::group([
     Route::apiResource('targets', TargetController::class)->only('index');
     Route::apiResource('packs', PackController::class)->only('index');
     Route::apiResource('modules', ModuleController::class)->only('index');
-    Route::apiResource('lessons', LessonController::class)->only('index');
+    Route::apiResource('lessons', LessonController::class)->only('index', 'show');
 
     Route::get('random-free-lessons', IndexRandomFreeLessonController::class)->name('random-free-lessons');
     Route::get('free-lessons', IndexFreeLessonController::class)->name('free-lessons');
