@@ -9,13 +9,14 @@ use Illuminate\Http\Request;
 
 use function Symfony\Component\Translation\t;
 
-class IndexFreeLessonController extends Controller
+class IndexRandomFreeLessonController extends Controller
 {
     public function __invoke(Request $request): LessonCollection
     {
         $lessons = Lesson::where('is_free', true)
-            ->orderBy('id', 'desc')
-            ->cursorPaginate();
+            ->inRandomOrder()
+            ->take(10)
+            ->get();
 
         return new LessonCollection($lessons);
     }
