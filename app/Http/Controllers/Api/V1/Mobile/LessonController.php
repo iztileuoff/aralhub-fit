@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Mobile;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\Mobile\LessonCollection;
 use App\Http\Resources\V1\Mobile\LessonResource;
+use App\Http\Resources\V1\Mobile\ShowLessonResource;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 
@@ -19,8 +20,8 @@ class LessonController extends Controller
         return new LessonCollection($lessons);
     }
 
-    public function show(Lesson $lesson): LessonResource
+    public function show(Lesson $lesson): ShowLessonResource
     {
-        return new LessonResource($lesson);
+        return new ShowLessonResource($lesson);
     }
 }
