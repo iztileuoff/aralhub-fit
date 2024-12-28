@@ -15,7 +15,9 @@ class LessonController extends Controller
     {
         $lessons = Lesson::when($request->input('module_id'), function ($query) use ($request) {
             $query->where('module_id', $request->input('module_id'));
-        })->get();
+        })
+            ->select('id', 'title', 'module_id', 'youtube_url', 'is_free')
+            ->get();
 
         return new LessonCollection($lessons);
     }

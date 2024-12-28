@@ -14,6 +14,7 @@ class IndexFreeLessonController extends Controller
     public function __invoke(Request $request): LessonCollection
     {
         $lessons = Lesson::where('is_free', true)
+            ->select('id', 'title', 'module_id', 'youtube_url', 'is_free')
             ->orderBy('id', 'desc')
             ->cursorPaginate($request->input('per_page', 15));
 
