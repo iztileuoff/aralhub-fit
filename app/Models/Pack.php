@@ -37,4 +37,9 @@ class Pack extends Model
     {
         return $this->hasMany(Module::class);
     }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 }
