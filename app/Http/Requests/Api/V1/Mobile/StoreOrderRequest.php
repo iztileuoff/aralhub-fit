@@ -14,7 +14,7 @@ class StoreOrderRequest extends FormRequest
             'user_id' => ['nullable'],
             'pack_id' => [
                 'required',
-                Rule::exists('packs', 'id'),
+                Rule::exists('packs', 'id'), // TODO: add where is_active true
                 Rule::unique('orders', 'pack_id')->where(function ($query) {
                     $query->where('status', 'new')->where('user_id', $this->user()->id);
                 })
@@ -31,7 +31,7 @@ class StoreOrderRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-        $pack = Pack::find($this->input('pack_id'));
+        $pack = Pack::findOrFail($this->input('pack_id'));
 
         $this->merge([
             'user_id' => $this->user()->id,
