@@ -15,6 +15,7 @@ class OrderController extends Controller
     {
         $orders = auth()->user()->orders()
             ->with('pack')
+            ->orderBy('id', 'desc')
             ->get();
 
         return new OrderCollection($orders);
