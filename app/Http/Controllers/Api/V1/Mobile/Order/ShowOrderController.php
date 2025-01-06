@@ -14,7 +14,7 @@ class ShowOrderController extends Controller
     {
         return new OrderResource($order->load([
             'pack',
-            'modules' => ['lessons:id,module_id,title,youtube_url'],
+            'modules' => ['lessons:id,module_id,title,youtube_url,is_free'],
         ]));
     }
 }
