@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
 {
@@ -34,5 +37,27 @@ class Order extends Model
     public function pack(): BelongsTo
     {
         return $this->belongsTo(Pack::class);
+    }
+
+    public function accesses(): HasMany
+    {
+        return $this->hasMany(Access::class);
+    }
+
+    public function availableAccess(): HasOne
+    {
+        return $this->hasOne(Access::class)->where('is_available', true);
+    }
+
+    public function nextAccess(): HasOne
+    {
+        return $this->hasOne(Access::class)->where('is_available', false)->orderBy('position_number', 'asc');
+    }
+
+    public function modules(): BelongsToMany
+    {
+        return $this->belongsToMany(Module::class, 'accesses', 'order_id', 'module_id')
+            ->withPivot('is_view_finished', 'is_available', 'position_number')
+            ->orderByPivot('position_number', 'asc');
     }
 }

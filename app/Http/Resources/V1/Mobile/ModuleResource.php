@@ -16,6 +16,14 @@ class ModuleResource extends JsonResource
             'title' => $this->title,
             'pack_id' => $this->pack_id,
             'pack' => new PackResource($this->whenLoaded('pack')),
+            'lessons_count' => $this->whenCounted('lessons'),
+            'lessons' => LessonResource::collection($this->whenLoaded('lessons')),
+            'is_view_finished' => $this->whenPivotLoaded('accesses', function () {
+                return boolval($this->pivot->is_view_finished);
+            }),
+            'is_available' => $this->whenPivotLoaded('accesses', function () {
+                return boolval($this->pivot->is_available);
+            }),
         ];
     }
 }

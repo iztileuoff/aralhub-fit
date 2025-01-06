@@ -19,6 +19,7 @@ class OrderResource extends JsonResource
             'pack' => new PackResource($this->whenLoaded('pack')),
             'amount' => $this->amount / 100,
             'status' => $this->status,
+            'modules' => ModuleResource::collection($this->whenLoaded('modules')),
             'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
         ];
     }
