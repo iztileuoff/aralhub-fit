@@ -14,6 +14,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $orders = auth()->user()->orders()
+            ->where('status', '!=', 'success')
             ->with('pack')
             ->orderBy('id', 'desc')
             ->get();
