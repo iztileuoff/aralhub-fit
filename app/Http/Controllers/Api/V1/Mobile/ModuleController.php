@@ -18,9 +18,4 @@ class ModuleController extends Controller
 
         return new ModuleCollection($modules);
     }
-
-    public function update()
-    {
-        // TODO: update is_view_finished, is_available
-    }
 }
