@@ -24,15 +24,4 @@ class IndexModuleRequest extends FormRequest
     {
         return true;
     }
-
-    protected function prepareForValidation(): void
-    {
-        $pack = Pack::findOrFail($this->input('pack_id'));
-
-        $this->merge([
-            'user_id' => $this->user()->id,
-            'amount' => $pack->price * 100,
-            'status' => 'new',
-        ]);
-    }
 }
