@@ -11,7 +11,7 @@ class PackController extends Controller
 {
     public function index(Request $request): PackCollection
     {
-        $packs = Pack::get();
+        $packs = Pack::where('is_active', true)->get();
 
         return new PackCollection($packs);
     }
