@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\Mobile\Lesson\IndexFreeLessonController;
 use App\Http\Controllers\Api\V1\Mobile\Lesson\IndexRandomFreeLessonController;
 use App\Http\Controllers\Api\V1\Mobile\LessonController;
+use App\Http\Controllers\Api\V1\Mobile\MessageController;
 use App\Http\Controllers\Api\V1\Mobile\Module\IndexModuleController;
 use App\Http\Controllers\Api\V1\Mobile\Module\UpdateModuleController;
 use App\Http\Controllers\Api\V1\Mobile\ModuleController;
@@ -24,6 +25,7 @@ Route::group([
     Route::apiResource('modules', ModuleController::class)->only('index');
     Route::apiResource('lessons', LessonController::class)->only('index', 'show');
     Route::apiResource('orders', OrderController::class)->only('index', 'store');
+    Route::apiResource('messages', MessageController::class)->only('index', 'store');
 
     Route::get('my/orders', IndexOrderController::class)->name('my.orders.index');
     Route::get('my/orders/{order}', ShowOrderController::class)->name('my.orders.show');

@@ -58,4 +58,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Pack::class, 'orders', 'user_id', 'pack_id')
             ->wherePivot('status', 'success');
     }
+
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
 }
