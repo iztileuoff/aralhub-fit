@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
             LessonSeeder::class,
             OrderSeeder::class,
             MessageSeeder::class,
-            \Goodoneuz\PayUz\Database\Seeds\PayUzSeeder::class,
         ]);
     }
 }
