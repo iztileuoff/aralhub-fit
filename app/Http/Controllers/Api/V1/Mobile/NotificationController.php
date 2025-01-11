@@ -14,7 +14,6 @@ class NotificationController extends Controller
     {
         $notifications = Notification::orderBy('id', 'desc')
             ->withCount('users')
-            ->select('id', 'title', 'created_at')
             ->cursorPaginate($request->input('per_page', 15));
 
         return new NotificationCollection($notifications);
