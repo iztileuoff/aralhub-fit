@@ -14,6 +14,9 @@ class NotificationResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'is_viewed' => $this->whenCounted('users', function () {
+                return boolval($this->users_count);
+            }),
             'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
         ];
     }
