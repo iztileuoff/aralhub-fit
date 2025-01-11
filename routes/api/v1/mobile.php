@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\Mobile\MessageController;
 use App\Http\Controllers\Api\V1\Mobile\Module\IndexModuleController;
 use App\Http\Controllers\Api\V1\Mobile\Module\UpdateModuleController;
 use App\Http\Controllers\Api\V1\Mobile\ModuleController;
+use App\Http\Controllers\Api\V1\Mobile\NotificationController;
 use App\Http\Controllers\Api\V1\Mobile\Order\IndexOrderController;
 use App\Http\Controllers\Api\V1\Mobile\Order\ShowOrderController;
 use App\Http\Controllers\Api\V1\Mobile\OrderController;
@@ -26,6 +27,7 @@ Route::group([
     Route::apiResource('lessons', LessonController::class)->only('index', 'show');
     Route::apiResource('orders', OrderController::class)->only('index', 'store');
     Route::apiResource('messages', MessageController::class)->only('index', 'store');
+    Route::apiResource('notifications', NotificationController::class)->only('index', 'show');
 
     Route::get('my/orders', IndexOrderController::class)->name('my.orders.index');
     Route::get('my/orders/{order}', ShowOrderController::class)->name('my.orders.show');
