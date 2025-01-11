@@ -13,7 +13,11 @@ class NotificationController extends Controller
     public function index(Request $request)
     {
         $notifications = Notification::orderBy('id', 'desc')
-            ->withCount('users')
+            ->withCount([
+                'users' => function ($query) {
+                    $query->where('id', auth()->user()->id);
+                }
+            ])
             ->cursorPaginate($request->input('per_page', 15));
 
         return new NotificationCollection($notifications);
