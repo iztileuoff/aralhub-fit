@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\V1\Mobile\Order\ShowOrderController;
 use App\Http\Controllers\Api\V1\Mobile\OrderController;
 use App\Http\Controllers\Api\V1\Mobile\PackController;
 use App\Http\Controllers\Api\V1\Mobile\ProfileController;
+use App\Http\Controllers\Api\V1\Mobile\RatingController;
 use App\Http\Controllers\Api\V1\Mobile\TargetController;
 
 Route::group([
@@ -28,6 +29,7 @@ Route::group([
     Route::apiResource('orders', OrderController::class)->only('index', 'store');
     Route::apiResource('messages', MessageController::class)->only('index', 'store');
     Route::apiResource('notifications', NotificationController::class)->only('index', 'show');
+    Route::apiResource('ratings', RatingController::class)->only('store');
 
     Route::get('my/orders', IndexOrderController::class)->name('my.orders.index');
     Route::get('my/orders/{order}', ShowOrderController::class)->name('my.orders.show');
