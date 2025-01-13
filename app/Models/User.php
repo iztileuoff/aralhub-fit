@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -41,6 +42,12 @@ class User extends Authenticatable
             'phone' => 'string',
             'target_id' => 'integer',
         ];
+    }
+
+    public function scopeSearch(Builder $query, $search): void
+    {
+        $query->where('name', 'like', "%$search%")
+            ->orWhere('phone', 'like', "%$search%");
     }
 
     public function target(): BelongsTo
