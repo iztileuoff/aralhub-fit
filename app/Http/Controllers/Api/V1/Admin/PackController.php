@@ -6,11 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\Admin\StorePackRequest;
 use App\Http\Requests\Api\V1\Admin\UpdatePackRequest;
 use App\Http\Resources\V1\Admin\PackResource;
-use App\Http\Resources\V1\Admin\UserCollection;
-use App\Http\Resources\V1\Admin\UserResource;
 use App\Http\Resources\V1\Mobile\PackCollection;
 use App\Models\Pack;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class PackController extends Controller
