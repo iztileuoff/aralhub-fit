@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -27,6 +28,14 @@ class Order extends Model
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
         ];
+    }
+
+    public function PaymeUrl(): Attribute
+    {
+        return new Attribute(
+            get: fn($value, $attributes) => config('app.url') . "/api/v1/pay/payme/{$attributes['id']}/{$attributes['amount']}",
+            set: null,
+        );
     }
 
     public function user(): BelongsTo
