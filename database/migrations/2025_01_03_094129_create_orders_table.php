@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('pack_id')->constrained()->cascadeOnDelete();
             $table->unsignedInteger('amount');
-            $table->enum('status', ['new', 'success', 'finished'])->default('new');
+            $table->enum('status', ['new', 'success', 'cancelled', 'finished'])->default('new');
             $table->timestamps();
         });
     }
