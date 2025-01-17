@@ -16,6 +16,7 @@ class Order extends Model
         'pack_id',
         'amount',
         'status',
+        'is_paid',
     ];
 
     protected function casts(): array
@@ -25,6 +26,7 @@ class Order extends Model
             'pack_id' => 'int',
             'amount' => 'integer',
             'status' => 'string',
+            'is_paid' => 'boolean',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
         ];
