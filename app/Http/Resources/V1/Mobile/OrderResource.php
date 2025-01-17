@@ -21,7 +21,7 @@ class OrderResource extends JsonResource
             'status' => $this->status,
             'modules' => ModuleResource::collection($this->whenLoaded('modules')),
             'payments' => [
-                'payme_url' => $this->PaymeUrl(),
+                'payme_url' => $this->payme_url,
             ],
             'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
         ];
