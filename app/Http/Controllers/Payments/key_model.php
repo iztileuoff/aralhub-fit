@@ -1,2 +1,2 @@
 <?php
-    return \App\Models\Order::find($key);
+    return \App\Models\Order::where('status', 'new')->where('id', $key)->first();
