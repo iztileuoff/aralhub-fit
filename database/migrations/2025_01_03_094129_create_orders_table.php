@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->foreignId('pack_id')->constrained()->cascadeOnDelete();
             $table->unsignedInteger('amount');
             $table->enum('status', ['new', 'success', 'cancelled', 'finished'])->default('new');
+            $table->boolean('is_paid')->default(false);
             $table->timestamps();
         });
     }
