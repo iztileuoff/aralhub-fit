@@ -16,7 +16,7 @@ class StoreOrderRequest extends FormRequest
                 'required',
                 Rule::exists('packs', 'id'), // TODO: add where is_active true
                 Rule::unique('orders', 'pack_id')->where(function ($query) {
-                    $query->where('status', '!=', 'finished')->where('user_id', $this->user()->id);
+                    $query->where('status', '!=', 'finished')->where('status', '!=', 'cancelled')->where('user_id', $this->user()->id);
                 })
             ],
             'amount' => ['nullable'],

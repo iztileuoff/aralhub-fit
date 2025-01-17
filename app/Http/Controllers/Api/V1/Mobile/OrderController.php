@@ -15,6 +15,7 @@ class OrderController extends Controller
     {
         $orders = auth()->user()->orders()
             ->where('status', '!=', 'success')
+            ->where('status', '!=', 'cancelled')
             ->with('pack')
             ->orderBy('id', 'desc')
             ->get();
