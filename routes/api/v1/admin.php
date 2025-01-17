@@ -3,7 +3,12 @@
 use App\Http\Controllers\Api\V1\Admin\AdminController;
 use App\Http\Controllers\Api\V1\Admin\Auth\LoginController;
 use App\Http\Controllers\Api\V1\Admin\Auth\LogoutController;
+use App\Http\Controllers\Api\V1\Admin\LessonController;
+use App\Http\Controllers\Api\V1\Admin\ModuleController;
+use App\Http\Controllers\Api\V1\Admin\NotificationController;
+use App\Http\Controllers\Api\V1\Admin\PackController;
 use App\Http\Controllers\Api\V1\Admin\ProfileController;
+use App\Http\Controllers\Api\V1\Admin\UserController;
 
 Route::group([
     'prefix'     => 'admin/auth',
@@ -21,4 +26,11 @@ Route::group([
     Route::apiSingleton('profile', ProfileController::class);
 
     Route::apiResource('admins', AdminController::class);
+    Route::apiResource('users', UserController::class)->only('index', 'show');
+
+    Route::apiResource('packs', PackController::class);
+    Route::apiResource('modules', ModuleController::class);
+    Route::apiResource('lessons', LessonController::class);
+
+    Route::apiResource('notifications', NotificationController::class);
 });
