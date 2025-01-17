@@ -15,13 +15,13 @@ class OrderCancelled
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public Order $order;
+    public int $orderId;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(Order $order)
+    public function __construct(int $orderId)
     {
-        $this->order = $order;
+        $this->orderId = $orderId;
     }
 }

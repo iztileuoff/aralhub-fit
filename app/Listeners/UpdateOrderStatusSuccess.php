@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\OrderPaid;
+use App\Models\Order;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -21,8 +22,10 @@ class UpdateOrderStatusSuccess
      */
     public function handle(OrderPaid $event): void
     {
-        $event->order->is_paid = true;
-        $event->order->status = 'success';
-        $event->order->save();
+        $order = Order::find($event->orderId);
+
+        $order->is_paid = true;
+        $order->status = 'success';
+        $order->save();
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\OrderCancelled;
+use App\Models\Order;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -21,7 +22,9 @@ class UpdateOrderStatusCancelled
      */
     public function handle(OrderCancelled $event): void
     {
-        $event->order->status = 'cancelled';
-        $event->order->save();
+        $order = Order::find($event->orderId);
+
+        $order->status = 'cancelled';
+        $order->save();
     }
 }

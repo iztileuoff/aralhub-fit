@@ -1,3 +1,3 @@
 <?php
 
-\App\Events\OrderPaid::dispatch($model);
+\App\Events\OrderPaid::dispatch($transaction->transactionable_id);
