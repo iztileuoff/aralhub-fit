@@ -19,7 +19,7 @@ class IndexPackLessonController extends Controller
         $lessons = Lesson::where('is_free', true)
             ->whereIn('module_id', $moduleIds)
             ->select('id', 'title', 'module_id', 'youtube_url', 'is_free')
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->cursorPaginate($request->input('per_page', 15));
 
         return new LessonCollection($lessons);
