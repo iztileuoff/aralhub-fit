@@ -16,8 +16,7 @@ class IndexPackLessonController extends Controller
     {
         $moduleIds = $pack->modules()->pluck('id');
 
-        $lessons = Lesson::where('is_free', true)
-            ->whereIn('module_id', $moduleIds)
+        $lessons = Lesson::whereIn('module_id', $moduleIds)
             ->select('id', 'title', 'module_id', 'youtube_url', 'is_free')
             ->orderBy('id', 'asc')
             ->cursorPaginate($request->input('per_page', 15));
