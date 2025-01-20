@@ -14,6 +14,7 @@ class MessageController extends Controller
     public function index(Request $request)
     {
         $messages = Message::orderBy('id', 'desc')
+            ->where('user_id', auth()->user()->id)
             ->cursorPaginate($request->input('per_page', 15));
 
         return new MessageCollection($messages);
