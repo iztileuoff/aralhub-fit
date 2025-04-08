@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 include_once __DIR__ . '/api/v1/auth.php';
@@ -19,4 +20,8 @@ Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
     $pay_uz
         ->driver($paysys)
         ->redirect($model, $amount, 860, $url);
+});
+
+Route::any('/eventRcv', function (Request $request) {
+    \Illuminate\Support\Facades\Log::info('Hik Central', ['request' => $request]);
 });
