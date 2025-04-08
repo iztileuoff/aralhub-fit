@@ -23,5 +23,5 @@ Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
 });
 
 Route::any('/eventRcv', function (Request $request) {
-    \Illuminate\Support\Facades\Log::info('Hik Central', ['request' => $request, 'all' => $request->all()]);
+    \Illuminate\Support\Facades\Log::info('Hik Central', ['request' => $request, 'content' => $request->getContent()]);
 });
